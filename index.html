@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 13 - jQuery Hide Show</title>
+
+    <!-- Nhúng thư viện jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #content{
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #dff0ff;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+        }
+
+        button{
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #217dbb;
+        }
+
+        #status{
+            margin-top: 15px;
+            font-weight: bold;
+            color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>THAO TÁC ẨN / HIỆN BẰNG jQuery</h2>
+
+    <!-- Khối nội dung -->
+    <div id="content">
+        <h3>Nội dung cần điều khiển</h3>
+        <p>
+            Đây là phần nội dung sẽ được ẩn hoặc hiện bằng jQuery.
+        </p>
+    </div>
+
+    <!-- Các nút chức năng -->
+    <button id="btnHide">Ẩn</button>
+    <button id="btnShow">Hiện</button>
+    <button id="btnToggle">Toggle</button>
+    <button id="btnCheck">Kiểm tra trạng thái</button>
+
+    <div id="status"></div>
+
+    <script>
+        $(document).ready(function(){
+
+            // Ẩn nội dung
+            $("#btnHide").click(function(){
+                $("#content").hide();
+            });
+
+            // Hiện nội dung
+            $("#btnShow").click(function(){
+                $("#content").show();
+            });
+
+            // Toggle ẩn/hiện
+            $("#btnToggle").click(function(){
+                $("#content").toggle();
+
+                // Đổi tên nút theo trạng thái
+                if($("#content").is(":visible")){
+                    $(this).text("Ẩn bằng Toggle");
+                } else {
+                    $(this).text("Hiện bằng Toggle");
+                }
+            });
+
+            // Kiểm tra trạng thái
+            $("#btnCheck").click(function(){
+
+                if($("#content").is(":visible")){
+                    $("#status").text("Nội dung đang HIỂN THỊ");
+                } else {
+                    $("#status").text("Nội dung đang BỊ ẨN");
+                }
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>
